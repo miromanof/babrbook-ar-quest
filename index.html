@@ -15,7 +15,7 @@
         <span class="bb-brand-divider"></span>
         <img class="bb-partner-logo" src="https://1baikal.ru/img/logo2026.svg?4" alt="Первый Байкальский">
         <span class="bb-brand-divider"></span>
-        <img class="bb-print-logo" src="https://print38.ru/content/images/new-elements/logo_cop_1p.png" alt="Центр оперативной печати">
+        <img class="bb-print-logo" src="assets/partners/print-vector.webp" alt="Оперативная типография Вектор">
       </div>
     </header>
 
@@ -75,7 +75,7 @@
       <button class="bb-close" type="button" aria-label="Закрыть">×</button>
       <p class="bb-label">Если что-то пошло не так</p>
       <h2>Не запускается AR?</h2>
-      <ol><li>Открой ссылку в Safari или Chrome.</li><li>Разреши сайту доступ к камере.</li><li>Обнови страницу и наведи телефон на персонажа целиком.</li></ol>
+      <ol><li>Открой ссылку в Safari или Chrome.</li><li>Разреши сайту доступ к камере.</li><li>Если включен VPN, выключи его и попробуй снова.</li><li>Обнови страницу и наведи телефон на персонажа целиком.</li></ol>
       <div class="bb-help-actions">
         <a class="bb-modal-primary" href="#AR-LINK">Попробовать снова</a>
         <button class="bb-fallback-open" type="button">Все равно не работает</button>
@@ -96,8 +96,9 @@
         <h2 class="bb-route-name">Байкал</h2>
         <p class="bb-route-text">Ищи героя рядом с местом на фотографии.</p>
         <img class="bb-route-location" src="assets/first-point.webp" alt="Первая точка маршрута">
-        <button class="bb-route-next" type="button">Я нашел персонажа</button>
-        <p class="bb-route-note">Подсказка к следующей точке появится после нажатия.</p>
+        <p class="bb-route-photo-reminder">Сфотографируй персонажа. Перед выдачей билета проверят все шесть фотографий.</p>
+        <button class="bb-route-next" type="button">Я сфотографировал персонажа</button>
+        <p class="bb-route-note">После нажатия появится подсказка к следующей точке.</p>
       </div>
     </div>
   </div>
@@ -154,7 +155,7 @@ html,body{background:#7f2f30}
 .bb-card{display:flex;flex-direction:column;background:linear-gradient(180deg,#8a3032 0%,#7f2f30 58%,#6f2729 100%)}
 .bb-brand-pair{display:flex;align-items:center;gap:8px;width:100%}.bb-logo img{width:58px}.bb-brand-divider{flex:0 0 1px;width:1px;height:20px;background:rgba(255,250,240,.3)}
 .bb-partner-logo{display:block;width:87px;height:auto;filter:brightness(0) invert(1);opacity:.92}
-.bb-print-logo{display:block;width:112px;height:auto;border-radius:2px}
+.bb-print-logo{display:block;width:112px;height:38px;object-fit:contain;object-position:left center}
 .bb-character-img{left:54%;right:auto;top:52%;bottom:auto;width:106svh;height:auto;max-width:none;object-fit:contain;object-position:center;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;filter:drop-shadow(0 24px 26px rgba(38,6,9,.32));opacity:.92}
 .bb-hero{min-height:390px;padding-top:34px}.bb-copy{width:72%}
 .bb-copy h1{max-width:290px;font-size:clamp(40px,11.2vw,51px);line-height:.94;letter-spacing:-.035em}
@@ -204,6 +205,7 @@ html,body{background:#7f2f30}
 .bb-route-character{display:block;max-width:92%;width:auto;height:220px;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(65,19,21,.22))}
 .bb-route-kicker{margin:14px 0 4px;color:#7f2f30;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.bb-route-name{margin-bottom:10px!important}.bb-route-text{margin:0 0 12px;font-size:14px;line-height:1.45}.bb-route-location{display:block;width:100%;height:150px;object-fit:cover;object-position:center 58%;margin:0 0 12px;border-radius:16px}.bb-route-location[hidden]{display:none}
 .bb-route-next{margin-top:4px}.bb-route-note{margin:9px 8px 0;color:#756a64;font-size:10px;line-height:1.35;text-align:center}
+.bb-route-photo-reminder{margin:0 0 12px;padding:11px 12px;border:1px solid rgba(127,47,48,.15);border-radius:13px;background:rgba(244,176,95,.18);color:#5f2023;font-size:12px;line-height:1.35;font-weight:750}.bb-route-photo-reminder[hidden]{display:none}
 </style>
 
 <script>
@@ -221,11 +223,11 @@ html,body{background:#7f2f30}
   });
   var route=[
     {name:'Байкал',image:'assets/route/baikal.webp',place:'Ищи героя рядом со зданием на фотографии.',clue:'[ПОДСКАЗКА БАЙКАЛА К ОЛЬХОНУ]',location:'/assets/first-point.webp'},
-    {name:'Ольхон',image:'assets/route/olkhon.webp',place:'Ищи героя в точке 2: [МЕСТО ВТОРОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОЛЬХОНА К САРМЕ]'},
-    {name:'Сарма',image:'assets/route/sarma.webp',place:'Ищи героя в точке 3: [МЕСТО ТРЕТЬЕЙ ТОЧКИ].',clue:'[ПОДСКАЗКА САРМЫ К НЕРПЕ]'},
+    {name:'Ольхон',image:'assets/route/sarma.webp',place:'Ищи героя в точке 2: [МЕСТО ВТОРОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОЛЬХОНА К САРМЕ]'},
+    {name:'Сарма',image:'assets/route/olkhon.webp',place:'Ищи героя в точке 3: [МЕСТО ТРЕТЬЕЙ ТОЧКИ].',clue:'[ПОДСКАЗКА САРМЫ К НЕРПЕ]'},
     {name:'Нерпа',image:'assets/route/nerpa.webp',place:'Ищи героя в точке 4: [МЕСТО ЧЕТВЕРТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА НЕРПЫ К ОМУЛЮ]'},
     {name:'Омуль',image:'assets/route/omul-route.webp',place:'Ищи героя в точке 5: [МЕСТО ПЯТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОМУЛЯ К АНГАРЕ]'},
-    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи финального героя в точке 6: [МЕСТО АНГАРЫ].',clue:'Пароль квеста: «Байкал в моем сердце». Запомни его и покажи волонтеру, чтобы получить билет для розыгрыша.'}
+    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи финального героя в точке 6: [МЕСТО АНГАРЫ].',clue:'Финальная фраза: «Байкал в моем сердце всегда». Запомни ее и покажи волонтеру вместе с фотографиями всех персонажей.'}
   ];
   var routeIndex=0,routeRevealed=false;
   var routeModal=root.querySelector('[data-modal="fallback"]');
@@ -240,8 +242,9 @@ html,body{background:#7f2f30}
     routeModal.querySelector('.bb-route-text').textContent=routeRevealed?item.clue:item.place;
     var location=routeModal.querySelector('.bb-route-location');
     if(!routeRevealed&&item.location){location.src=item.location;location.hidden=false}else{location.hidden=true}
-    routeModal.querySelector('.bb-route-next').textContent=routeRevealed?(last?'Где получить билет?':'Идти к следующей точке'):'Я нашел персонажа';
-    routeModal.querySelector('.bb-route-note').textContent=routeRevealed?(last?'Покажи волонтеру пароль целиком.':'Не закрывай страницу, пока идешь к следующему герою.'):'Подсказка к следующей точке появится после нажатия.';
+    routeModal.querySelector('.bb-route-photo-reminder').hidden=routeRevealed;
+    routeModal.querySelector('.bb-route-next').textContent=routeRevealed?(last?'Где получить билет?':'Идти к следующей точке'):'Я сфотографировал персонажа';
+    routeModal.querySelector('.bb-route-note').textContent=routeRevealed?(last?'Покажи волонтеру фразу и все шесть фотографий.':'Не закрывай страницу, пока идешь к следующему герою.'):'После нажатия появится подсказка к следующей точке.';
     routeModal.querySelector('.bb-route-modal').scrollTop=0;
   }
   root.querySelector('.bb-route-next').addEventListener('click',function(){
