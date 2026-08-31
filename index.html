@@ -43,7 +43,7 @@
 
     <div class="bb-actions">
       <!-- ЗАМЕНА AR-ССЫЛКИ: замените #AR-LINK -->
-      <a class="bb-start" href="https://projects.web-ar.studio/v2/b698334be9">Начать AR-квест <span>↗</span></a>
+      <a class="bb-start" href="https://projects.web-ar.studio/v2/b698334be9">Начать AR-квест</a>
     </div>
     <button class="bb-help-open" type="button">Не работает AR? Есть запасной вариант</button>
   </div>
@@ -258,8 +258,3 @@ html,body{background:#7f2f30}
   root.querySelectorAll('.bb-overlay').forEach(function(el){
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.bb-close'))closeModal(el)});
   });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){root.querySelectorAll('.bb-overlay.is-open').forEach(closeModal)}});
-})();
-</script>
-</body>
-</html>
