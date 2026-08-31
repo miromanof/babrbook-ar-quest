@@ -46,7 +46,7 @@
       <a class="bb-start" href="#AR-LINK">Начать AR-квест <span>↗</span></a>
       <button class="bb-map-open" type="button"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>Где получить билет?</button>
     </div>
-    <button class="bb-help-open" type="button">Не запускается сканер?</button>
+    <button class="bb-help-open" type="button">Не работает AR? Есть запасной вариант</button>
   </div>
 
   <div class="bb-overlay" data-modal="map">
@@ -74,8 +74,31 @@
     <div class="bb-modal">
       <button class="bb-close" type="button" aria-label="Закрыть">×</button>
       <p class="bb-label">Если что-то пошло не так</p>
-      <h2>Проверь камеру</h2>
+      <h2>Не запускается AR?</h2>
       <ol><li>Открой ссылку в Safari или Chrome.</li><li>Разреши сайту доступ к камере.</li><li>Обнови страницу и наведи телефон на персонажа целиком.</li></ol>
+      <div class="bb-help-actions">
+        <a class="bb-modal-primary" href="#AR-LINK">Попробовать снова</a>
+        <button class="bb-fallback-open" type="button">Все равно не работает</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bb-overlay" data-modal="fallback">
+    <div class="bb-modal bb-route-modal">
+      <button class="bb-close" type="button" aria-label="Закрыть">×</button>
+      <p class="bb-label">Запасной маршрут</p>
+      <div class="bb-route-progress"><span></span><b>1 из 6</b></div>
+      <div class="bb-route-stage">
+        <div class="bb-route-visual">
+          <img class="bb-route-character" src="assets/route/baikal.webp" alt="Байкал">
+        </div>
+        <p class="bb-route-kicker">Первый герой</p>
+        <h2 class="bb-route-name">Байкал</h2>
+        <p class="bb-route-text">Ищи героя рядом с местом на фотографии.</p>
+        <img class="bb-route-location" src="assets/first-point.webp" alt="Первая точка маршрута">
+        <button class="bb-route-next" type="button">Я нашел персонажа</button>
+        <p class="bb-route-note">Подсказка к следующей точке появится после нажатия.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -171,6 +194,16 @@ html,body{background:#7f2f30}
 @media(max-height:740px){
   .bb-character-img{left:89%;top:calc(78% + 100px);width:90svh;height:auto}
 }
+.bb-help-actions{display:grid;gap:9px;margin-top:18px}
+.bb-modal-primary,.bb-fallback-open,.bb-route-next{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;padding:0 16px;border:0;border-radius:15px;font-weight:800;text-decoration:none;cursor:pointer}
+.bb-modal-primary,.bb-route-next{background:#7f2f30;color:#fffaf0}
+.bb-fallback-open{background:rgba(127,47,48,.08);color:#7f2f30;border:1px solid rgba(127,47,48,.2)}
+.bb-route-modal{max-height:calc(100svh - 24px);overflow:auto;padding:22px}
+.bb-route-progress{display:flex;align-items:center;gap:10px;margin:2px 40px 14px 0}.bb-route-progress>span{position:relative;display:block;flex:1;height:5px;overflow:hidden;border-radius:99px;background:rgba(127,47,48,.13)}.bb-route-progress>span:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--route-progress,16.67%);border-radius:inherit;background:#7f2f30;transition:width .25s ease}.bb-route-progress b{font-size:11px;color:#7f2f30}
+.bb-route-visual{height:230px;display:grid;place-items:end center;overflow:hidden;border-radius:20px;background:radial-gradient(circle at 50% 75%,rgba(244,176,95,.42),rgba(127,47,48,.08) 60%,transparent 61%)}
+.bb-route-character{display:block;max-width:92%;width:auto;height:220px;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(65,19,21,.22))}
+.bb-route-kicker{margin:14px 0 4px;color:#7f2f30;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.bb-route-name{margin-bottom:10px!important}.bb-route-text{margin:0 0 12px;font-size:14px;line-height:1.45}.bb-route-location{display:block;width:100%;height:150px;object-fit:cover;object-position:center 58%;margin:0 0 12px;border-radius:16px}.bb-route-location[hidden]{display:none}
+.bb-route-next{margin-top:4px}.bb-route-note{margin:9px 8px 0;color:#756a64;font-size:10px;line-height:1.35;text-align:center}
 </style>
 
 <script>
@@ -182,6 +215,40 @@ html,body{background:#7f2f30}
   root.querySelector('.bb-map-open').addEventListener('click',function(){openModal('map')});
   root.querySelector('.bb-first-open').addEventListener('click',function(){openModal('first')});
   root.querySelector('.bb-help-open').addEventListener('click',function(){openModal('help')});
+  root.querySelector('.bb-fallback-open').addEventListener('click',function(){
+    closeModal(root.querySelector('[data-modal="help"]'));
+    renderRoute();openModal('fallback');
+  });
+  var route=[
+    {name:'Байкал',image:'assets/route/baikal.webp',place:'Ищи героя рядом со зданием на фотографии.',clue:'[ПОДСКАЗКА БАЙКАЛА К ОЛЬХОНУ]',location:'/assets/first-point.webp'},
+    {name:'Ольхон',image:'assets/route/olkhon.webp',place:'Ищи героя в точке 2: [МЕСТО ВТОРОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОЛЬХОНА К САРМЕ]'},
+    {name:'Сарма',image:'assets/route/sarma.webp',place:'Ищи героя в точке 3: [МЕСТО ТРЕТЬЕЙ ТОЧКИ].',clue:'[ПОДСКАЗКА САРМЫ К НЕРПЕ]'},
+    {name:'Нерпа',image:'assets/route/nerpa.webp',place:'Ищи героя в точке 4: [МЕСТО ЧЕТВЕРТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА НЕРПЫ К ОМУЛЮ]'},
+    {name:'Омуль',image:'assets/route/omul-route.webp',place:'Ищи героя в точке 5: [МЕСТО ПЯТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОМУЛЯ К АНГАРЕ]'},
+    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи финального героя в точке 6: [МЕСТО АНГАРЫ].',clue:'Пароль квеста: «Байкал в моем сердце». Запомни его и покажи волонтеру, чтобы получить билет для розыгрыша.'}
+  ];
+  var routeIndex=0,routeRevealed=false;
+  var routeModal=root.querySelector('[data-modal="fallback"]');
+  function renderRoute(){
+    var item=route[routeIndex],last=routeIndex===route.length-1;
+    routeModal.querySelector('.bb-route-progress').style.setProperty('--route-progress',((routeIndex+1)/route.length*100)+'%');
+    routeModal.querySelector('.bb-route-progress b').textContent=(routeIndex+1)+' из '+route.length;
+    routeModal.querySelector('.bb-route-character').src=item.image;
+    routeModal.querySelector('.bb-route-character').alt=item.name;
+    routeModal.querySelector('.bb-route-kicker').textContent=last?'Финальный герой':'Точка '+(routeIndex+1);
+    routeModal.querySelector('.bb-route-name').textContent=item.name;
+    routeModal.querySelector('.bb-route-text').textContent=routeRevealed?item.clue:item.place;
+    var location=routeModal.querySelector('.bb-route-location');
+    if(!routeRevealed&&item.location){location.src=item.location;location.hidden=false}else{location.hidden=true}
+    routeModal.querySelector('.bb-route-next').textContent=routeRevealed?(last?'Где получить билет?':'Идти к следующей точке'):'Я нашел персонажа';
+    routeModal.querySelector('.bb-route-note').textContent=routeRevealed?(last?'Покажи волонтеру пароль целиком.':'Не закрывай страницу, пока идешь к следующему герою.'):'Подсказка к следующей точке появится после нажатия.';
+    routeModal.querySelector('.bb-route-modal').scrollTop=0;
+  }
+  root.querySelector('.bb-route-next').addEventListener('click',function(){
+    if(!routeRevealed){routeRevealed=true;renderRoute();return}
+    if(routeIndex===route.length-1){closeModal(routeModal);openModal('map');return}
+    routeIndex++;routeRevealed=false;renderRoute();
+  });
   root.querySelectorAll('.bb-overlay').forEach(function(el){
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.bb-close'))closeModal(el)});
   });
