@@ -11,11 +11,11 @@
   <div class="bb-card">
     <header class="bb-top">
       <div class="bb-brand-pair">
-        <div class="bb-logo"><img src="https://static.tildacdn.com/tild3338-3665-4338-b731-323734636365/babrbook__logo_bg2x.png" alt="Бабрбук"></div>
+        <a class="bb-logo" href="https://babrbook.com" target="_blank" rel="noopener noreferrer"><img src="https://static.tildacdn.com/tild3338-3665-4338-b731-323734636365/babrbook__logo_bg2x.png" alt="Бабрбук"></a>
         <span class="bb-brand-divider"></span>
-        <img class="bb-partner-logo" src="https://1baikal.ru/img/logo2026.svg?4" alt="Первый Байкальский">
+        <a class="bb-brand-link" href="https://1baikal.ru" target="_blank" rel="noopener noreferrer"><img class="bb-partner-logo" src="https://1baikal.ru/img/logo2026.svg?4" alt="Первый Байкальский"></a>
         <span class="bb-brand-divider"></span>
-        <img class="bb-print-logo" src="assets/partners/print-vector.webp" alt="Оперативная типография Вектор">
+        <a class="bb-brand-link" href="https://print38.ru" target="_blank" rel="noopener noreferrer"><img class="bb-print-logo" src="assets/partners/print-vector.webp" alt="Оперативная типография Вектор"></a>
       </div>
     </header>
 
@@ -43,7 +43,7 @@
 
     <div class="bb-actions">
       <!-- ЗАМЕНА AR-ССЫЛКИ: замените #AR-LINK -->
-      <a class="bb-start" href="#AR-LINK">Начать AR-квест <span>↗</span></a>
+      <a class="bb-start" href="https://projects.web-ar.studio/v2/b698334be9">Начать AR-квест <span>↗</span></a>
       <button class="bb-map-open" type="button"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>Где получить билет?</button>
     </div>
     <button class="bb-help-open" type="button">Не работает AR? Есть запасной вариант</button>
@@ -77,7 +77,7 @@
       <h2>Не запускается AR?</h2>
       <ol><li>Открой ссылку в Safari или Chrome.</li><li>Разреши сайту доступ к камере.</li><li>Если включен VPN, выключи его и попробуй снова.</li><li>Обнови страницу и наведи телефон на персонажа целиком.</li></ol>
       <div class="bb-help-actions">
-        <a class="bb-modal-primary" href="#AR-LINK">Попробовать снова</a>
+        <a class="bb-modal-primary" href="https://projects.web-ar.studio/v2/b698334be9">Попробовать снова</a>
         <button class="bb-fallback-open" type="button">Все равно не работает</button>
       </div>
     </div>
@@ -154,6 +154,7 @@ html,body{background:#7f2f30}
 <style>
 .bb-card{display:flex;flex-direction:column;background:linear-gradient(180deg,#8a3032 0%,#7f2f30 58%,#6f2729 100%)}
 .bb-brand-pair{display:flex;align-items:center;gap:8px;width:100%}.bb-logo img{width:58px}.bb-brand-divider{flex:0 0 1px;width:1px;height:20px;background:rgba(255,250,240,.3)}
+.bb-brand-link{display:flex;align-items:center;text-decoration:none}
 .bb-partner-logo{display:block;width:87px;height:auto;filter:brightness(0) invert(1);opacity:.92}
 .bb-print-logo{display:block;width:56px;height:19px;object-fit:contain;object-position:left center}
 .bb-character-img{left:54%;right:auto;top:52%;bottom:auto;width:106svh;height:auto;max-width:none;object-fit:contain;object-position:center;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;filter:drop-shadow(0 24px 26px rgba(38,6,9,.32));opacity:.92}
@@ -206,6 +207,10 @@ html,body{background:#7f2f30}
 .bb-route-kicker{margin:14px 0 4px;color:#7f2f30;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.bb-route-name{margin-bottom:10px!important}.bb-route-text{margin:0 0 12px;font-size:14px;line-height:1.45}.bb-route-location{display:block;width:100%;height:150px;object-fit:cover;object-position:center 58%;margin:0 0 12px;border-radius:16px}.bb-route-location[hidden]{display:none}
 .bb-route-next{margin-top:4px}.bb-route-note{margin:9px 8px 0;color:#756a64;font-size:10px;line-height:1.35;text-align:center}
 .bb-route-photo-reminder{margin:0 0 12px;padding:11px 12px;border:1px solid rgba(127,47,48,.15);border-radius:13px;background:rgba(244,176,95,.18);color:#5f2023;font-size:12px;line-height:1.35;font-weight:750}.bb-route-photo-reminder[hidden]{display:none}
+[data-modal="help"] .bb-modal{padding-left:18px;padding-right:18px}
+[data-modal="help"] .bb-modal h2{font-size:clamp(24px,7vw,29px);line-height:.96;letter-spacing:-.025em;white-space:nowrap;margin-right:32px}
+[data-modal="help"] .bb-modal ol{width:100%}
+[data-modal="help"] .bb-modal li{padding-left:38px;padding-right:0;font-size:13px;line-height:1.32}
 </style>
 
 <script>
@@ -219,15 +224,15 @@ html,body{background:#7f2f30}
   root.querySelector('.bb-help-open').addEventListener('click',function(){openModal('help')});
   root.querySelector('.bb-fallback-open').addEventListener('click',function(){
     closeModal(root.querySelector('[data-modal="help"]'));
-    renderRoute();openModal('fallback');
+    routeIndex=0;routeRevealed=false;renderRoute();openModal('fallback');
   });
   var route=[
-    {name:'Байкал',image:'assets/route/baikal.webp',place:'Ищи героя рядом со зданием на фотографии.',clue:'[ПОДСКАЗКА БАЙКАЛА К ОЛЬХОНУ]',location:'/assets/first-point.webp'},
-    {name:'Ольхон',image:'assets/route/sarma.webp',place:'Ищи героя в точке 2: [МЕСТО ВТОРОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОЛЬХОНА К САРМЕ]'},
-    {name:'Сарма',image:'assets/route/olkhon.webp',place:'Ищи героя в точке 3: [МЕСТО ТРЕТЬЕЙ ТОЧКИ].',clue:'[ПОДСКАЗКА САРМЫ К НЕРПЕ]'},
-    {name:'Нерпа',image:'assets/route/nerpa.webp',place:'Ищи героя в точке 4: [МЕСТО ЧЕТВЕРТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА НЕРПЫ К ОМУЛЮ]'},
-    {name:'Омуль',image:'assets/route/omul-route.webp',place:'Ищи героя в точке 5: [МЕСТО ПЯТОЙ ТОЧКИ].',clue:'[ПОДСКАЗКА ОМУЛЯ К АНГАРЕ]'},
-    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи финального героя в точке 6: [МЕСТО АНГАРЫ].',clue:'Финальная фраза: «Байкал в моем сердце всегда». Запомни ее и покажи волонтеру вместе с фотографиями всех персонажей.'}
+    {name:'Байкал',image:'assets/route/baikal.webp',place:'Ищи героя рядом со зданием на фотографии.',clue:'Кодовое слово: «Байкал».',location:'/assets/first-point.webp'},
+    {name:'Ольхон',image:'assets/route/sarma.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «сердце».'},
+    {name:'Сарма',image:'assets/route/sarma-v2.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «в».'},
+    {name:'Нерпа',image:'assets/route/nerpa.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «моем».'},
+    {name:'Омуль',image:'assets/route/omul-route.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «всегда».'},
+    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «сердце». Собери из найденных слов фразу и скажи ее волонтеру.'}
   ];
   var routeIndex=0,routeRevealed=false;
   var routeModal=root.querySelector('[data-modal="fallback"]');
