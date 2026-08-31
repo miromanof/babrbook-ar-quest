@@ -10,14 +10,17 @@
 <div id="bb-ar-quest">
   <div class="bb-card">
     <header class="bb-top">
-      <div class="bb-logo"><img src="https://static.tildacdn.com/tild3338-3665-4338-b731-323734636365/babrbook__logo_bg2x.png" alt="Бабрбук"></div>
-      <span class="bb-pill">AR-КВЕСТ</span>
+      <div class="bb-brand-pair">
+        <div class="bb-logo"><img src="https://static.tildacdn.com/tild3338-3665-4338-b731-323734636365/babrbook__logo_bg2x.png" alt="Бабрбук"></div>
+        <span class="bb-brand-divider"></span>
+        <img class="bb-partner-logo" src="https://1baikal.ru/img/logo2026.svg?4" alt="Первый Байкальский">
+      </div>
     </header>
 
     <section class="bb-hero">
       <div class="bb-copy">
         <p class="bb-label">День Байкала</p>
-        <h1>Найди героев Байкала</h1>
+        <h1>Найди героя Байкала</h1>
         <p class="bb-lead">Пройди маршрут, собери подсказки и получи билет для участия в розыгрыше.</p>
       </div>
       <img class="bb-character-img" src="https://cdn.jsdelivr.net/gh/miromanof/babrbook@main/tilda-assets/angara.webp" alt="Ангара">
@@ -34,7 +37,7 @@
       <a class="bb-start" href="#AR-LINK">Начать AR-квест <span>↗</span></a>
       <button class="bb-map-open" type="button"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>Где получить билет?</button>
     </div>
-    <button class="bb-help-open" type="button">Не запускается камера?</button>
+    <button class="bb-help-open" type="button">Не запускается сканер?</button>
   </div>
 
   <div class="bb-overlay" data-modal="map">
@@ -103,6 +106,29 @@ html,body{background:#7f2f30}
 .bb-help-open{color:rgba(255,250,240,.62);border-color:rgba(255,250,240,.42)}
 .bb-modal{color:#0b0b0a}.bb-modal .bb-label{color:#7f2f30}.bb-modal h2{font-size:38px;line-height:.82}.bb-close{color:#0b0b0a}
 @media(max-height:700px){.bb-copy h1{font-size:clamp(42px,12.8vw,58px)}.bb-character-img{height:194px}.bb-hero{min-height:180px}}
+</style>
+
+<style>
+.bb-card{display:flex;flex-direction:column;background:linear-gradient(180deg,#8a3032 0%,#7f2f30 58%,#6f2729 100%)}
+.bb-brand-pair{display:flex;align-items:center;gap:11px}.bb-logo img{width:68px}.bb-brand-divider{width:1px;height:24px;background:rgba(255,250,240,.3)}
+.bb-partner-logo{display:block;width:118px;height:auto;filter:brightness(0) invert(1);opacity:.92}
+.bb-hero{min-height:300px;padding-top:34px}.bb-copy{width:72%}
+.bb-copy h1{max-width:290px;font-size:clamp(40px,11.2vw,51px);line-height:.94;letter-spacing:-.035em}
+.bb-lead{max-width:250px;margin-top:17px;font-size:13px;line-height:1.42}
+.bb-character-img{right:-34px;bottom:-56px;width:64%;height:335px;object-position:right bottom}
+.bb-steps{z-index:5;margin-top:-26px;padding:14px 13px;gap:9px;background:rgba(35,11,13,.69);backdrop-filter:blur(11px);box-shadow:0 15px 38px rgba(38,8,10,.2)}
+.bb-steps>div{min-height:33px}.bb-steps p{font-size:12px;line-height:1.34}
+.bb-actions{margin-top:auto;padding-top:22px;gap:10px}.bb-start{min-height:58px}.bb-map-open{min-height:48px}
+.bb-help-open{margin-top:12px;margin-bottom:2px;font-size:12px}
+@media(max-height:740px){
+  .bb-hero{min-height:250px;padding-top:24px}
+  .bb-character-img{height:285px;bottom:-47px}
+  .bb-steps{margin-top:-22px;padding:11px 12px;gap:5px}
+  .bb-steps>div{min-height:28px}
+  .bb-actions{padding-top:13px;gap:7px}
+  .bb-start{min-height:50px}.bb-map-open{min-height:42px}
+  .bb-help-open{margin-top:8px}
+}
 </style>
 
 <script>
