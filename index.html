@@ -24,7 +24,7 @@
         <p class="bb-label">День Байкала</p>
         <h1>Найди героя Байкала</h1>
       </div>
-      <img class="bb-character-img" src="https://cdn.jsdelivr.net/gh/miromanof/babrbook@main/tilda-assets/angara.webp" alt="Ангара">
+      <img class="bb-character-img" src="assets/omul.webp" alt="Омуль">
     </section>
 
     <p class="bb-lead">Пройди маршрут, собери подсказки и получи билет для участия в розыгрыше.</p>
@@ -132,6 +132,7 @@ html,body{background:#7f2f30}
 .bb-brand-pair{display:flex;align-items:center;gap:8px;width:100%}.bb-logo img{width:58px}.bb-brand-divider{flex:0 0 1px;width:1px;height:20px;background:rgba(255,250,240,.3)}
 .bb-partner-logo{display:block;width:87px;height:auto;filter:brightness(0) invert(1);opacity:.92}
 .bb-print-logo{display:block;width:112px;height:auto;border-radius:2px}
+.bb-character-img{left:54%;right:auto;top:52%;bottom:auto;width:106svh;height:auto;max-width:none;object-fit:contain;object-position:center;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;filter:drop-shadow(0 24px 26px rgba(38,6,9,.32));opacity:.92}
 .bb-hero{min-height:390px;padding-top:34px}.bb-copy{width:72%}
 .bb-copy h1{max-width:290px;font-size:clamp(40px,11.2vw,51px);line-height:.94;letter-spacing:-.035em}
 .bb-character-img{right:-48px;bottom:-105px;width:78%;height:455px;object-position:right bottom}
@@ -148,7 +149,7 @@ html,body{background:#7f2f30}
 .bb-help-open{margin-top:12px;margin-bottom:2px;font-size:12px}
 @media(max-height:740px){
   .bb-hero{min-height:315px;padding-top:24px}
-  .bb-character-img{height:365px;bottom:-82px}
+  .bb-character-img{left:55%;top:54%;width:102svh;height:auto}
   .bb-card>.bb-lead{margin:-100px 0 12px;max-width:56%;font-size:12px}
   .bb-guide{padding:10px 12px}
   .bb-steps{gap:5px}
@@ -157,6 +158,18 @@ html,body{background:#7f2f30}
   .bb-actions{padding-top:13px;gap:7px}
   .bb-start{min-height:50px}.bb-map-open{min-height:42px}
   .bb-help-open{margin-top:8px}
+}
+.bb-character-img{
+  left:54%;right:auto;top:52%;bottom:auto;
+  width:106svh;height:auto;max-width:none;
+  object-fit:contain;object-position:center;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  transform-origin:center;
+  filter:drop-shadow(0 24px 26px rgba(38,6,9,.32));
+  opacity:.92
+}
+@media(max-height:740px){
+  .bb-character-img{left:55%;top:54%;width:102svh;height:auto}
 }
 </style>
 
