@@ -15,7 +15,7 @@
         <span class="bb-brand-divider"></span>
         <a class="bb-brand-link" href="https://1baikal.ru" target="_blank" rel="noopener noreferrer"><img class="bb-partner-logo" src="https://1baikal.ru/img/logo2026.svg?4" alt="Первый Байкальский"></a>
         <span class="bb-brand-divider"></span>
-        <a class="bb-brand-link" href="https://print38.ru" target="_blank" rel="noopener noreferrer"><img class="bb-print-logo" src="assets/partners/print-vector.webp" alt="Оперативная типография Вектор"></a>
+        <a class="bb-brand-link" href="https://print38.ru/" target="_blank" rel="noopener noreferrer" aria-label="Сайт оперативной типографии Вектор"><img class="bb-print-logo" src="assets/partners/print-vector.webp" alt="Оперативная типография Вектор"></a>
       </div>
     </header>
 
@@ -44,7 +44,6 @@
     <div class="bb-actions">
       <!-- ЗАМЕНА AR-ССЫЛКИ: замените #AR-LINK -->
       <a class="bb-start" href="https://projects.web-ar.studio/v2/b698334be9">Начать AR-квест <span>↗</span></a>
-      <button class="bb-map-open" type="button"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>Где получить билет?</button>
     </div>
     <button class="bb-help-open" type="button">Не работает AR? Есть запасной вариант</button>
   </div>
@@ -219,7 +218,6 @@ html,body{background:#7f2f30}
   if(!root)return;
   function openModal(name){var el=root.querySelector('[data-modal="'+name+'"]');if(el){el.classList.add('is-open');document.body.style.overflow='hidden';}}
   function closeModal(el){el.classList.remove('is-open');document.body.style.overflow='';}
-  root.querySelector('.bb-map-open').addEventListener('click',function(){openModal('map')});
   root.querySelector('.bb-first-open').addEventListener('click',function(){openModal('first')});
   root.querySelector('.bb-help-open').addEventListener('click',function(){openModal('help')});
   root.querySelector('.bb-fallback-open').addEventListener('click',function(){
@@ -232,7 +230,7 @@ html,body{background:#7f2f30}
     {name:'Сарма',image:'assets/route/sarma-v2.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «в».'},
     {name:'Нерпа',image:'assets/route/nerpa.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «моем».'},
     {name:'Омуль',image:'assets/route/omul-route.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «всегда».'},
-    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи героя на территории усадьбы Сукачева.',clue:'Кодовое слово: «сердце». Собери из найденных слов фразу и скажи ее волонтеру.'}
+    {name:'Ангара',image:'assets/route/angara.webp',place:'Ищи финального героя на территории усадьбы Сукачева.',clue:'Собери из найденных слов фразу и скажи ее волонтеру. Спасибо за участие! Теперь узнай, где получить билет.'}
   ];
   var routeIndex=0,routeRevealed=false;
   var routeModal=root.querySelector('[data-modal="fallback"]');
