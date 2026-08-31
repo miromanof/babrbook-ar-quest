@@ -30,7 +30,7 @@
     <p class="bb-lead">Пройди маршрут, собери подсказки и получи билет для участия в розыгрыше.</p>
     <div class="bb-guide">
       <section class="bb-steps">
-        <div><b>1</b><p>Найди первого героя<br><strong>[МЕСТО ПЕРВОЙ ТОЧКИ]</strong></p></div>
+        <div><b>1</b><p>Найди первого героя <button class="bb-first-open" type="button">Где искать?</button></p></div>
         <div><b>2</b><p>Нажми кнопку и разреши доступ к камере</p></div>
         <div><b>3</b><p>Наведи телефон на героя. Он подскажет, куда идти</p></div>
       </section>
@@ -57,6 +57,16 @@
       <!-- ЗАМЕНА КАРТЫ: замените весь .bb-map на <img class="bb-map-img" src="ССЫЛКА_НА_КАРТУ" alt="Карта до волонтера"> -->
       <div class="bb-map"><i></i><i></i><em></em><b>МЕСТО ДЛЯ КАРТЫ</b><span>●</span></div>
       <p class="bb-modal-copy"><strong>[ТОЧНОЕ МЕСТО ВОЛОНТЕРА]</strong><br>Покажи волонтеру пароль после прохождения квеста.</p>
+    </div>
+  </div>
+
+  <div class="bb-overlay" data-modal="first">
+    <div class="bb-modal">
+      <button class="bb-close" type="button" aria-label="Закрыть">×</button>
+      <p class="bb-label">Первая точка</p>
+      <h2>Ищи героя у этого здания</h2>
+      <img class="bb-location-photo" src="assets/first-point.webp" alt="Здание первой точки квеста">
+      <p class="bb-modal-copy">Подойди к зданию и найди рядом первого персонажа. Затем нажми «Начать AR-квест».</p>
     </div>
   </div>
 
@@ -132,6 +142,8 @@ html,body{background:#7f2f30}
 .bb-subscribe p{max-width:210px;margin:0;color:rgba(255,250,240,.72);font-size:11px;line-height:1.35}
 .bb-subscribe a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 13px;border:1px solid rgba(255,250,240,.3);border-radius:999px;background:rgba(255,250,240,.1);color:#fffaf0;font-size:11px;font-weight:800;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .bb-steps>div{min-height:33px}.bb-steps p{font-size:12px;line-height:1.34}
+.bb-first-open{margin-left:5px;padding:2px 0;border:0;border-bottom:1px dashed rgba(244,176,95,.8);background:none;color:#f4b05f;font-size:10px;font-weight:800;cursor:pointer}
+.bb-location-photo{display:block;width:100%;height:min(47svh,420px);object-fit:cover;object-position:center 58%;border-radius:18px}
 .bb-actions{margin-top:auto;padding-top:22px;gap:10px}.bb-start{min-height:58px}.bb-map-open{min-height:48px}
 .bb-help-open{margin-top:12px;margin-bottom:2px;font-size:12px}
 @media(max-height:740px){
@@ -155,6 +167,7 @@ html,body{background:#7f2f30}
   function openModal(name){var el=root.querySelector('[data-modal="'+name+'"]');if(el){el.classList.add('is-open');document.body.style.overflow='hidden';}}
   function closeModal(el){el.classList.remove('is-open');document.body.style.overflow='';}
   root.querySelector('.bb-map-open').addEventListener('click',function(){openModal('map')});
+  root.querySelector('.bb-first-open').addEventListener('click',function(){openModal('first')});
   root.querySelector('.bb-help-open').addEventListener('click',function(){openModal('help')});
   root.querySelectorAll('.bb-overlay').forEach(function(el){
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.bb-close'))closeModal(el)});
