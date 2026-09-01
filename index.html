@@ -53,8 +53,7 @@
       <button class="bb-close" type="button" aria-label="Закрыть">×</button>
       <p class="bb-label">Билет для розыгрыша</p>
       <h2>Найди волонтера</h2>
-      <!-- ЗАМЕНА КАРТЫ: замените весь .bb-map на <img class="bb-map-img" src="ССЫЛКА_НА_КАРТУ" alt="Карта до волонтера"> -->
-      <div class="bb-map"><i></i><i></i><em></em><b>МЕСТО ДЛЯ КАРТЫ</b><span>●</span></div>
+      <img class="bb-map-img" src="assets/ticket-map.webp" alt="Карта, где находится волонтер с билетами">
       <p class="bb-modal-copy"><strong>[ТОЧНОЕ МЕСТО ВОЛОНТЕРА]</strong><br>Покажи волонтеру пароль после прохождения квеста.</p>
     </div>
   </div>
@@ -258,3 +257,8 @@ html,body{background:#7f2f30}
   root.querySelectorAll('.bb-overlay').forEach(function(el){
     el.addEventListener('click',function(e){if(e.target===el||e.target.closest('.bb-close'))closeModal(el)});
   });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){root.querySelectorAll('.bb-overlay.is-open').forEach(closeModal)}});
+})();
+</script>
+</body>
+</html>
